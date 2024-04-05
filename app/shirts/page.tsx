@@ -1,26 +1,50 @@
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent, DialogDescription, DialogFooter, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
-import { Table, TableBody, TableCell, TableRow } from "@/components/ui/table";
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
-import { Search, PlusCircle } from 'lucide-react'
+import { useState } from "react";
+import { Search, PlusCircle } from "lucide-react";
+
 import NewShirt from "./new/page";
+import Image from "next/image";
 
 type Shirt = {
   id?: string | number;
-  image_url?: string;
+  image_url: string;
   name: string;
   price: number;
   size?: string;
   color?: string;
 };
 
-export default async function Shirts() {
-  const response = await fetch("http://localhost:3031/shirts", {
+interface ShirtsPropsType {
+  searchParams?: {
+    name?: string;
+    price?: string;
+    size?: string;
+    color?: string;
+  };
+}
+
+export default async function Shirts(props: ShirtsPropsType) {
+  const urlQuery = new URLSearchParams({ ...props.searchParams })
+
+  const response = await fetch("http://localhost:3031/shirts?" + urlQuery, {
     next: {
       tags: ["get-shirts"],
     },
+    headers: {},
   });
+
   const data: Shirt[] = await response.json();
 
   return (
@@ -61,14 +85,29 @@ export default async function Shirts() {
           </div>
         </form>
       </div>
-      
+
       <div className="border rounded-lg p-2 mt-4">
         <Table>
+          <TableHeader>
+            <TableRow>
+              <TableHead>Item</TableHead>
+              <TableHead>Nome</TableHead>
+              <TableHead>Preço</TableHead>
+              <TableHead>Cor</TableHead>
+              <TableHead>Tamanho</TableHead>
+            </TableRow>
+          </TableHeader>
+
           <TableBody>
             {data.map((shirt) => (
               <TableRow key={shirt.id}>
+                <TableCell className="flex justify-center">
+                  <img src={shirt.image_url} alt="t-shirt image here" width={130} height={164} />
+                </TableCell>
                 <TableCell>{shirt.name}</TableCell>
                 <TableCell>{shirt.price}</TableCell>
+                <TableCell>{shirt.color}</TableCell>
+                <TableCell>{shirt.size}</TableCell>
               </TableRow>
             ))}
           </TableBody>

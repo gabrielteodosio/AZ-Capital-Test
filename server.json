@@ -15,6 +15,13 @@
       "size": "G",
       "color": "Verde",
       "id": "7499"
+    },
+    {
+      "id": "beeb",
+      "name": "Gabriel",
+      "price": "123",
+      "size": "M",
+      "color": "Roxo"
     }
   ]
 }
