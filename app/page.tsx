@@ -1,29 +1,31 @@
-'use client'
+"use client";
 
 import { Button } from "@/components/ui/button";
 import { useRouter } from "next/navigation";
 
 export default function Home() {
-  const router = useRouter()
+  const router = useRouter();
 
   const onNavigateToList = () => {
-    router.push('/shirts')
-  }
+    router.push("/shirts");
+  };
 
   const onNavigateToNew = () => {
-    router.push('/shirts/new')
-  }
+    router.push("/shirts/new");
+  };
 
   return (
-    <main className="grid h-screen place-items-center bg-slate-300">
+    <main className="flex items-center justify-center h-screen">
       <div>
-        <h1 className="text-3xl">Welcome to <b>The Store</b></h1>
+        <h1 className="text-3xl">
+          Welcome to <b>The Store</b>
+        </h1>
         <div className="flex flex-row justify-center mt-3">
           <Button className="mr-2" onClick={onNavigateToList}>
-            List All
+            Listar anúncios
           </Button>
           <Button className="" onClick={onNavigateToNew}>
-            New
+            Novo anúncio
           </Button>
         </div>
       </div>

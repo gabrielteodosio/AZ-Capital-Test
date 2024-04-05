@@ -10,3 +10,9 @@ So the dependencies can be downloaded and installed, and the command below to se
 ```bash
 npm run dev
 ```
+
+## The "api"
+To make things easier, we are going to use a fake api using `json-server`. To make use of it is simple, just run:
+```bash
+npm run db:serve
+```

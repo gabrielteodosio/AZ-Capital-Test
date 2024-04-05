@@ -1,0 +1,20 @@
+{
+  "shirts": [
+    {
+      "image_url": "https://www.80scasualclassics.co.uk/images/lacoste-t-shirt-royal-blue-p4394-43226_image.jpg",
+      "name": "Lacoste",
+      "price": 80,
+      "size": "M",
+      "color": "Azul",
+      "id": "1518"
+    },
+    {
+      "image_url": "https://www.80scasualclassics.co.uk/images/lacoste-classic-fit-t-shirt-green-p24554-125406_image.jpg",
+      "name": "Lacoste",
+      "price": 120,
+      "size": "G",
+      "color": "Verde",
+      "id": "7499"
+    }
+  ]
+}
